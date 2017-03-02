@@ -1,57 +1,55 @@
-export PATH="/usr/local/bin:$PATH"
-PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
-[[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
+# echo is like puts for bash (bash is the program running in your terminal)
+echo "Loading ~/.bash_profile..."
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# $VARIABLE will render before the rest of the command is executed
+echo "Logged in as $USER at $(hostname)"
 
+# Load git completions
+git_completion_script=/usr/local/etc/bash_completion.d/git-completion.bash
+test -s $git_completion_script && source $git_completion_script
+
+# A more colorful prompt
+# \[\e[0m\] resets the color to default color
+c_reset='\[\e[0m\]'
+#  \e[0;31m\ sets the color to red
+c_path='\[\e[0;31m\]'
+# \e[0;32m\ sets the color to green
+c_git_clean='\[\e[0;32m\]'
+# \e[0;31m\ sets the color to red
+c_git_dirty='\[\e[0;31m\]'
 RED="\033[0;31m"
 YELLOW="\033[0;33m"
 GREEN="\033[0;32m"
 CYAN="\033[0;36m"
 NO_COLOUR="\[\033[0m\]"
 
-parse_git_branch ()
+# PS1 is the variable for the prompt you see everytime you hit enter
+PROMPT_COMMAND='PS1="${NO_COLOUR}\t @ \w${c_reset}$(git_prompt) :> "'
+
+export PS1='\n\[\033[0;31m\]\t @ \w\[\033[0m\]$(git_prompt)\[\033[0m\]:> '
+
+# determines if the git branch you are on is clean or dirty
+git_prompt ()
 {
-    local GITDIR=`git rev-parse --show-toplevel 2>&1` # Get root directory of git repo
-    if [[ "$GITDIR" != '/Users/shreyas' ]] # Don't show status of home directory repo
-    then
-        # Figure out the current branch, wrap in brackets and return it
-        local BRANCH=`git branch 2>/dev/null | sed -n '/^\*/s/^\* //p'`
-        if [ -n "$BRANCH" ]; then
-            echo -e "[$BRANCH]"
-        fi
-    else
-        echo ""
-    fi
+  if ! git rev-parse --git-dir > /dev/null 2>&1; then
+    return 0
+  fi
+  # Grab working branch name
+  git_branch=$(Git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')
+  # Clean or dirty branch
+  if git diff --quiet 2>/dev/null >&2; then
+    git_color="${c_git_clean}"
+  else
+    git_color=${CYAN}
+  fi
+  echo " [$git_color$git_branch${c_reset}]"
 }
 
-function git_color ()
-{
-    # Get the status of the repo and chose a color accordingly
-    local STATUS=`git status 2>&1`
-    if [[ "$STATUS" == *'Not a git repository'* ]]
-    then
-        echo ""
-    else
-        if [[ "$STATUS" != *'working directory clean'* ]]
-        then
-            # CYAN is if need to commit
-            echo -e "$CYAN"
-        else
-            if [[ "$STATUS" == *'Your branch is ahead'* ]]
-            then
-                # yellow if need to push
-                echo -e "$YELLOW"
-            else
-                # else cyan
-                echo -e "$GREEN"
-            fi
-        fi
-    fi
-}
+# Colors ls should use for folders, files, symlinks etc, see `man ls` and
+# search for LSCOLORS
+export LSCOLORS=ExGxFxdxCxDxDxaccxaeex
+# Force ls to use colors (G) and use humanized file sizes (h)
+alias ls='ls -Gh'
 
-#http://shreyaschand.com/blog/2013/03/18/show-git-branch-status-in-bash-prompt/
-# Call the above functions inside the PS1 declaration
-#export PS1='$(git_color)$(parse_git_branch)\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \$ '
-#https://gist.github.com/ekampf/772597/raw/19d3454aa3806a7131e0a2b01f12850e13f61f92/gistfile1.eclass
-export PS1="$GREEN[\t]$NO_COLOUR\u@ISS:\w\$(git_color)\$(parse_git_branch)$NO_COLOUR\$ "
+# Force grep to always use the color option and show line numbers
+export GREP_OPTIONS='--color=always'
