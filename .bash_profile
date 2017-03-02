@@ -1,3 +1,4 @@
+source ~/.profile
 # echo is like puts for bash (bash is the program running in your terminal)
 echo "Loading ~/.bash_profile..."
 
