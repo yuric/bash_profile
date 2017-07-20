@@ -7,6 +7,6 @@ local_python_env ()
   vpy="${VIRTUAL_ENV##*/}"
   echo "${vpy:0:1}${vpy:3:1}-${vpy: -3}"
 }
-local_py=$(local_python_env)
 source "../env/bin/activate"
+local_py=$(local_python_env)
 echo -e "============Python env activated ${GREEN}[$local_py]$(tput sgr0) for ADL_LRS"
