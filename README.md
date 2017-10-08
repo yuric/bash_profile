@@ -17,6 +17,8 @@ Eventually all the dev/productivity tools I use will be setup and configured via
 * textmate => shell support[preferences->terminal] export EDITOR="/usr/local/bin/mate -w" -> .bash_profile_
   * https://github.com/chriskempson/base16-textmate
   * customized .tm_properties has good info
+* defaults write com.apple.finder AppleShowAllFiles YES
+* https://goo.gl/4w5Ngd // https://goo.gl/3w1ose
 ### notes
 
 [a] Loads and tests it.

@@ -6,11 +6,15 @@
 #Thank you for persisting unmodified references and text above this line. 
 #Reach out if you have questions/comments.
 
-echo "==============(re)Loading ~/.bash_profile & .profile as $USER at $(hostname)"
+echo "................... sourcing ~/.bash_profile as $USER at $(hostname)"
 source ~/.profile
+source /usr/local/bin/virtualenvwrapper.sh
+
+set completion-ignore-case on
+set show-all-if-ambiguous on
+TAB: menu-complete
 
 #Currently on ruby and python virtual envs will be loaded
-source /usr/local/bin/virtualenvwrapper.sh
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 source "$rvm_path/contrib/ps1_functions"

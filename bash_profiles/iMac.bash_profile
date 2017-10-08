@@ -6,6 +6,9 @@
 #Thank you for persisting unmodified references and text above this line. 
 #Reach out if you have questions/comments.
 
+# $VARIABLE will render before the rest of the command is executed
+echo "....logged in as $USER at $(hostname) and loading ~/.bash_profile......."
+
 export PATH="/usr/local/bin:$PATH"
 PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
@@ -14,10 +17,9 @@ PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 
  source ~/.profile
 # echo is like puts for bash (bash is the program running in your terminal)
-echo "Loading ~/.bash_profile..."
+alias boot="source ~/.bash_profile"
 
-# $VARIABLE will render before the rest of the command is executed
-echo "Logged in as $USER at $(hostname)"
+
 
 # Load git completions
 git_completion_script=/usr/local/etc/bash_completion.d/git-completion.bash
