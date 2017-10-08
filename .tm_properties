@@ -1,0 +1,82 @@
+#Creator: Yuri Costa
+#Contributors: 
+#June.2017
+#github.com/yuric/bash_profile, 
+#This code is released under the AGPLv3 license.
+#Thank you for persisting unmodified references and text above this line. 
+#Reach out if you have questions/comments.
+
+#Window Title
+theme              = '766026CB-703D-4610-B070-8DE07D967C5F'
+windowTitleSCM     = '${TM_SCM_BRANCH:+ ($TM_SCM_NAME: $TM_SCM_BRANCH)}'
+windowTitleProject = '${projectDirectory:+ ${projectDirectory/^.*\///}}'
+windowTitle        = '$windowTitleProject/$TM_DISPLAYNAME$windowTitleSCM [$TM_FILEPATH]'
+
+#local global tm propreties: ~/Library/Application Support/TextMate/Global.tmProperties
+#default tm properties: /Applications/TextMate.app/Contents/Resources/Default.tmProperties
+#properties reference (TM 2)
+#  http://wiki.macromates.com/Reference/Settings
+fontSize                = 12
+encoding                = "UTF-8"
+exclude                 = "{*.{o,pyc,git,DS_Store},Icon\r,CVS,_darcs,_MTN,\{arch\},blib,*\~.nib}"
+include                 = "{$include,.*}"
+binary                  = "{*.{ai,bz2,flv,gif,gz,icns,ico,jpg,jpeg,m4v,nib,o,pdf,png,psd,pyc,rtf,scssc,swf,tar,tbz,tgz,tif,tiff,zip},Icon\r}"
+
+#tabs, Spaces and new lines
+tabSize                 = 2
+softTabs                = true
+showInvisibles          = true
+softWrap                = true
+
+#local vars
+LANG                 = "en_US.UTF-8"
+LC_CTYPE             = "en_US.UTF-8"
+TM_APP_PATH          = "${CWD/\/Contents\/Resources$//}"
+TM_MATE              = "$CWD/mate"
+MATEFLAGS            = "--no-recent"
+TM_QUERY             = "$CWD/tm_query"
+TM_SCM_COMMIT_WINDOW = "$CWD/commit"
+
+#git
+#shell tm utility
+#  http://blog.macromates.com/2005/textmate-shell-utility-tmmate/
+#  git config --global core.editor "mate -w"
+[ .git/COMMIT_EDITMSG ]
+spellChecking    = true
+spellingLanguage = 'en'
+
+[ text.git-commit ]
+spellChecking    = true
+spellingLanguage = 'en'
+
+[ attr.untitled ]
+fileType         = source.ruby
+
+#Plain text
+[ text ]
+softWrap         = false
+showInvisibles   = false
+
+[ source.ruby ]
+tabSize          = 2
+softTabs         = true
+
+[ source.python ]
+softTabs         = true
+
+[ source.ninja ]
+softTabs         = true
+
+[ "/System/Library/Frameworks/**/Headers/**" ]
+encoding         = "MACROMAN"
+tabSize          = 8
+
+[ "hg-editor-*.txt" ]
+fileType         = "text.hg-commit"
+
+[ *.go ]
+relatedFilePath  = "${TM_FILEPATH/(?=\.go$)/_test/}"
+
+[ *_test.go ]
+relatedFilePath  = "${TM_FILEPATH/_test(?=\.go$)//}"
+#END customized .tm_properties

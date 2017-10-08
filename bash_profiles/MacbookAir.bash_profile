@@ -1,3 +1,11 @@
+#Creator: Yuri Costa
+#Contributors: 
+#June.2017
+#github.com/yuric/bash_profile, 
+#This code is released under the AGPLv3 license.
+#Thank you for persisting unmodified references and text above this line. 
+#Reach out if you have questions/comments.
+
 export ZAPPA_DEPLOY=update
 export DEPLOY_STAGE=prod
 export WORKON_HOME=$HOME/.virtualenvs
@@ -121,15 +129,16 @@ alias gl="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %
 alias env-s="bash -c \"set -o posix; set | sed -e '/^_/,\\\$d';\""
 #alias env="set -o posix ; set)
 
-cd () { builtin cd "$@" && chpwd; }
-pushd () { builtin pushd "$@" && chpwd; }
-popd () { builtin popd "$@" && chpwd; }
-
-
-chpwd () {
-echo $PWD
-  case $PWD in
-    /Users/ycosta3987/Documents/Developer/ADL_LRS)
-        . project_settings.bash;;
-  esac
-}
+	# Overwritting 'cd' so python .envs are loaded when entering directory.
+# cd () { builtin cd "$@" && chpwd; }
+# pushd () { builtin pushd "$@" && chpwd; }
+# popd () { builtin popd "$@" && chpwd; }
+#
+#
+# chpwd () {
+# echo $PWD
+#   case $PWD in
+#     /Users/ycosta3987/Documents/Developer/ADL_LRS)
+#         . project_settings.bash;;
+#   esac
+# }
