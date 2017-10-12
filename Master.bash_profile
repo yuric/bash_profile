@@ -3,7 +3,6 @@
 #June.2017
 #github.com/yuric/bash_profile, 
 #This code is released under the AGPLv3 license.
-#Thank you for persisting unmodified references and text above this line. 
 #Reach out if you have questions/comments.
 
 echo "................... sourcing ~/.bash_profile as $USER at $(hostname)"

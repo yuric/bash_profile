@@ -1,12 +1,11 @@
 #Creator: Yuri Costa
-#Contributors: 
+#Contributors:
 #June.2017
-#github.com/yuric/bash_profile, 
+#github.com/yuric/bash_profile,
 #This code is released under the AGPLv3 license.
-#Thank you for persisting unmodified references and text above this line. 
 #Reach out if you have questions/comments.
 
-echo "....logged in as $USER at $(hostname) and loading ~/.bash_profile......."
+echo "-Bash: $BASH_VERSION logged in as $USER at $(hostname) and loading ~/.bash_profile."
 
 export PATH="/usr/local/bin:$PATH"
 PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
