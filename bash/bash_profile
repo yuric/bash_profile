@@ -1,0 +1,66 @@
+# -------------------------------------------------------------------
+# .bash_profile
+#TODO WIP: add disclaimer and proper separation of responsabilities.
+# -------------------------------------------------------------------
+
+# -------------------------------------------------------------------
+# Source my bashrc file
+# -------------------------------------------------------------------
+
+# Source our .bashrc, if present
+if [ -f ~/.bashrc ]; then
+  source ~/.bashrc
+fi
+
+# Source our bash.local, if present
+if [ -f ~/.bashrc.local ]; then
+  source ~/.bashrc.local
+fi
+
+# -------------------------------------------------------------------
+# Build a PATH environment variable
+# -------------------------------------------------------------------
+
+# set PATH so it includes user's private bin if it exists
+if [ -d $HOME/bin ] ; then
+    PATH="${HOME}/bin:${PATH}"
+fi
+
+# set PATH so it includes /usr/local/sbin if it exists
+if [ -d /usr/local/sbin ] ; then
+	PATH="/usr/local/sbin:${PATH}"
+fi
+
+# set PATH so it includes /usr/sbin if it exists
+if [ -d /usr/sbin ] ; then
+  PATH="/usr/sbin:${PATH}"
+fi
+
+# set PATH so it includes /sbin if it exists
+if [ -d /sbin ] ; then
+PATH="/sbin:${PATH}"
+fi
+
+# add Go path for Debian
+if [ -d /usr/local/go/bin ] ; then
+  PATH="${PATH}:/usr/local/go/bin"
+fi
+
+# prepend /usr/local/bin to the head of the PATH to keep Homebrew happy
+if [ -d /usr/local/bin ] ; then
+	PATH="/usr/local/bin:${PATH}"
+fi
+
+# Add Standard ML/NJ binaries to path
+if [ -d /usr/local/smlnj/bin ] ; then
+  PATH="${PATH}:/usr/local/smlnj/bin"
+fi
+
+export PATH
+
+# -------------------------------------------------------------------
+# Enable RVM TODO
+# -------------------------------------------------------------------
+# -------------------------------------------------------------------
+# Console snap shot TODO: git status folder etc.
+# -------------------------------------------------------------------

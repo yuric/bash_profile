@@ -1,0 +1,115 @@
+# -------------------------------------------------------------------
+# .bash_aliases
+#
+# Various aliases that I like and use.
+# -------------------------------------------------------------------
+
+# Ruby stuff {{{
+alias ri='ri -Tf ansi'     # Search Ruby documentaton
+
+# }}}
+# Sorted size {{{
+alias 'dus=du -sckx * | sort -nr'
+
+# Processes {{{
+alias psg='ps aux | grep -v grep | grep -i -e VSZ -e'
+
+# }}}
+# }}}
+# Mac OS X specific stuff {{{
+alias 'today=calendar -A 0 -f /usr/share/calendar/calendar.mark | sort'
+alias 'adventure=emacs -batch -l dunnet'
+alias 'mailsize=du -hs ~/Library/mail'
+alias 'ttop=top -ocpu -R -F -s 2 -n30'
+alias "dismount=osascript -e 'tell application "Finder" to eject (every disk whose ejectable is true)'"
+
+# }}}
+# ls variants {{{
+alias l="ls -al ${colorflag}"
+alias lsd='ls -ld */'
+alias lh='ls -a | egrep "^\."'
+alias ls="ls ${colorflag}"
+
+alias sym="ls -la | grep '\->'"
+
+# curiosities
+# gsh shows the number of commits for the current repos for all developers
+alias gsh="git shortlog | grep -E '^[ ]+\w+' | wc-l"
+
+# guser shows a list of all developers and the number of commits they've made
+alias guser="git shortlog | grep -E '^[^ ]'"
+
+# ect (Edit Changed in Tabs) opens all foles marked as changed by Git in tabs
+alias ect="git status --short | awk '{print $2}' | xargs -o nvim"
+
+alias d='docker'
+alias dclean='docker rm -v $(docker ps -aq -f status=exited)'
+
+# }}}
+# Random shortcuts {{{
+alias balls='brew update; brew upgrade; brew cleanup; brew doctor'
+alias wifi='networksetup -setairportpower en0'
+alias makepass='openssl rand -base64 12'
+alias rot13='tr a-zA-Z n-za-mN-ZA-M'
+
+# }}}
+# VPN & Remote machines {{{
+alias tools='ssh ubuntu@amazon.com'
+
+
+# }}}
+# Oddball stuff {{{
+alias ipp='dig +short myip.opendns.com @resolver1.opendns.com'
+alias sloc='/usr/local/sloccount/bin/sloccount'
+alias adventure='emacs -batch -l dunnet'
+alias ttop='top -ocpu -R -F -s 2 -n30'
+
+
+# }}}
+# Hosts {{{
+
+# vhosts - edit hosts file
+alias hosts='sudo mate /etc/hosts'
+
+# Enable aliases to be sudo’ed
+alias sudo='sudo '
+
+# }}}
+# Aliases from new-alias function
+alias lst='ls -alt'
+# }}}
+
+# Python virtualenv {{{
+alias mkenv='mkvirtualenv'
+alias on='workon'
+alias off='deactivate'
+
+# }}}
+# Python virtualenv {{{
+alias mkenv='mkvirtualenv'
+alias on='workon'
+alias off='deactivate'
+
+# }}}
+# Ruby virtualenv {{{
+#TODO RVM STUFF
+
+# }}}
+# Random stuff {{{
+alias balls='brew update; brew upgrade; brew cleanup; brew doctor'
+alias wifi='networksetup -setairportpower en0'
+alias makepass='openssl rand -base64 12'
+alias rot13='tr a-zA-Z n-za-mN-ZA-M'
+
+# }}}
+# VPN & Remote machines {{{
+alias tools='ssh ubuntu@amazon.com'
+
+# }}}
+# Random stuff {{{
+alias ipp='dig +short myip.opendns.com @resolver1.opendns.com'
+alias adventure='emacs -batch -l dunnet'
+alias ttop='top -ocpu -R -F -s 2 -n30'
+alias boot="source ~/.bash_profile"
+# alias baboot='source ~/.bash_aliases'
+

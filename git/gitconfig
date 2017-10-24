@@ -1,0 +1,44 @@
+ [user]
+	name = Yuri Costa
+	email = yuri@sparkroad.com
+  
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+  
+[core]
+	editor = mate -w
+
+[github]
+    user = yuric
+    
+[alias]
+    # Show verbose output
+    tags = tag -l
+    branches = branch -a
+    hist = "log --graph --pretty=format:'%Cred%h%Creset %d %s %Cgreen(%cr)%Creset %Cblue[%an]%Creset' --abbrev-commit --date=relative"
+    ahead = "log @{u}...HEAD --graph --decorate --left-right --boundary --pretty=format:'%Cred%h%Creset %d %s %Cgreen(%cr)%Creset %Cblue[%an]%Creset' --abbrev-commit --date=relative"
+    today = "log --stat --since='1 Day Ago' --graph --pretty=oneline --abbrev-commit --date=relative"
+
+[color]
+    ui = auto
+    interactive = auto
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = green
+    changed = magenta
+    untracked = bold yellow
+
+[diff]
+    # tool = kaleidoscope
+
+[merge]
+    # Summarize merged commits into new one.
+    log = true
