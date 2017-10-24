@@ -16,6 +16,7 @@ Eventually all the dev/productivity tools I use will be setup and configured via
 * [rails composer](https://github.com/RailsApps/rails-composer)(might not work with latest rails)
 * textmate => shell support[preferences->terminal] export EDITOR="/usr/local/bin/mate -w" -> .bash_profile_
   * https://github.com/chriskempson/base16-textmate
+  * https://github.com/zanshin/dotfiles/blob/master/DETAILS.markdown
   * customized .tm_properties has good info
   * TM_RUBY=#{which ruby's path}
 Show hidden files:
