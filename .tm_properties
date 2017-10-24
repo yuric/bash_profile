@@ -6,13 +6,17 @@
 #Thank you for persisting unmodified references and text above this line. 
 #Reach out if you have questions/comments.
 
+#Getting Started withe new textmate install
+# 1. Install the shell support under textmate/preferences/terminal 
+# 2. Make sure you have `export EDITOR="/usr/local/bin/mate -w"` in your .bash_profile
+
 #Window Title
 theme              = '766026CB-703D-4610-B070-8DE07D967C5F'
 windowTitleSCM     = '${TM_SCM_BRANCH:+ ($TM_SCM_NAME: $TM_SCM_BRANCH)}'
 windowTitleProject = '${projectDirectory:+ ${projectDirectory/^.*\///}}'
 windowTitle        = '$windowTitleProject/$TM_DISPLAYNAME$windowTitleSCM [$TM_FILEPATH]'
 
-#local global tm propreties: ~/Library/Application Support/TextMate/Global.tmProperties
+#global tm propreties: ~/Library/Application Support/TextMate/Global.tmProperties
 #default tm properties: /Applications/TextMate.app/Contents/Resources/Default.tmProperties
 #properties reference (TM 2)
 #  http://wiki.macromates.com/Reference/Settings
@@ -23,6 +27,7 @@ include                 = "{$include,.*}"
 binary                  = "{*.{ai,bz2,flv,gif,gz,icns,ico,jpg,jpeg,m4v,nib,o,pdf,png,psd,pyc,rtf,scssc,swf,tar,tbz,tgz,tif,tiff,zip},Icon\r}"
 
 #tabs, Spaces and new lines
+#Read more? https://github.com/textmate/textmate/wiki/Hidden-Settings
 tabSize                 = 2
 softTabs                = true
 showInvisibles          = true
@@ -55,7 +60,7 @@ fileType         = source.ruby
 #Plain text
 [ text ]
 softWrap         = false
-showInvisibles   = false
+showInvisibles   = true
 
 [ source.ruby ]
 tabSize          = 2

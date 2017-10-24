@@ -6,8 +6,14 @@
 #Reach out if you have questions/comments.
 
 echo "................... sourcing ~/.bash_profile as $USER at $(hostname)"
-source ~/.profile
-source /usr/local/bin/virtualenvwrapper.sh
+if [ -f ~/.profile ]
+then
+  source ~/.profile
+  source /usr/local/bin/virtualenvwrapper.sh
+else
+    echo "WARNING: Missing source files. Check .bash_profile."
+fi
+
 
 set completion-ignore-case on
 set show-all-if-ambiguous on
@@ -47,6 +53,7 @@ PROMPT_COMMAND='PS1="${NO_COLOUR}[\t]\w$(py_env_and_stash)$(rvm_env_set)$(git_pr
 export PROMPT_COMMAND
 # Force grep to always use the color option and show line numbers
 export GREP_OPTIONS='--color=always'
+export EDITOR="/usr/local/bin/mate -w"
 
 #exposes python virtual virtual env name
 python_env ()
@@ -127,7 +134,9 @@ alias remove='rm -i'
 alias move='mv -i'
 #alias env="set -o posix ; set)
 #du -cksh * |sort -rn |head -11 
-	# Overwritting so python .envs are loaded when entering directory. profile_settings.bash is in the github directory (yuric/bash_profile)
+
+	# Overwritting so the projects python environement is loaded when entering directory. Requires profile_settings.bash. Get it here => github.com/yuric/bash_profile. Feel free to PR
+  # improments. All here is a a sketch in my mind. Commented out because I am not deving in multiple python environments on the time of this writting.
 # cd () { builtin cd "$@" && chpwd; }
 # pushd () { builtin pushd "$@" && chpwd; }
 # popd () { builtin popd "$@" && chpwd; }
@@ -139,42 +148,3 @@ alias move='mv -i'
 #         . project_settings.bash;;
 #   esac
 # }
-
-# Added by the canvas-lms setup script
-# These settings make chruby work
-# See https://github.com/postmodern/chruby
-[ -f /usr/local/share/chruby/chruby.sh ] && . /usr/local/share/chruby/chruby.sh
-[ -f /usr/local/share/chruby/auto.sh ] && . /usr/local/share/chruby/auto.sh
-[ -f /usr/local/opt/chruby/share/chruby/chruby.sh ] && . /usr/local/opt/chruby/share/chruby/chruby.sh
-[ -f /usr/local/opt/chruby/share/chruby/auto.sh ] && . /usr/local/opt/chruby/share/chruby/auto.sh
-
-#Added by canvas-lms setup-development script
-#This adds the gem bin to your PATH
-# if ! $(echo $PATH | grep "$(gem env 'GEM_PATHS' | sed -e 's|:|/bin:|g')/bin" >/dev/null 2>&1); then
-#     export PATH="$PATH:$(gem env 'GEM_PATHS' | sed -e 's|:|/bin:|g')/bin"
-# fi
-
-
-# # Added by canvas-lms setup-development script
-# # This adds the brew bin to your PATH
-# if $(which brew >/dev/null 2>&1); then
-#     export PATH="$PATH:$(brew --prefix)/bin"
-# fi
-#
-# # Added by canvas-lms setup-development script
-# # This adds the gem bin to your PATH
-# if ! $(echo $PATH | grep "$(gem env 'GEM_PATHS' | sed -e 's|:|/bin:|g')/bin" >/dev/null 2>&1); then
-#     export PATH="$PATH:$(gem env 'GEM_PATHS' | sed -e 's|:|/bin:|g')/bin"
-# fi
-#
-# # Added by canvas-lms setup-development script
-# # This adds the gem bin to your PATH
-# if ! $(echo $PATH | grep "$(gem env 'GEM_PATHS' | sed -e 's|:|/bin:|g')/bin" >/dev/null 2>&1); then
-#     export PATH="$PATH:$(gem env 'GEM_PATHS' | sed -e 's|:|/bin:|g')/bin"
-# fi
-hitch() {
-  command hitch "$@"
-  if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
-}
-alias unhitch='hitch -u'
-hitch

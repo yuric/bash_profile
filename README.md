@@ -18,7 +18,10 @@ Eventually all the dev/productivity tools I use will be setup and configured via
   * https://github.com/chriskempson/base16-textmate
   * customized .tm_properties has good info
   * TM_RUBY=#{which ruby's path}
+Show hidden files:
 * defaults write com.apple.finder AppleShowAllFiles YES
+List view as default:∏
+* defaults write com.apple.Finder FXPreferredViewStyle Nlsv;killall Finder
 * https://goo.gl/4w5Ngd // https://goo.gl/3w1ose
 ### notes
 
@@ -44,3 +47,4 @@ test -s $git_completion_script && source $git_completion_script
 
 
 Thanks for stopping by. :blush:
+ln -s /Users/yuricosta/Documents/developer/YuriC/bash_profile/Master.bash_profile ~/.bash_profile
