@@ -1,3 +1,8 @@
+# cd ~/
+# touch .gitignore_global
+# open .gitignore_global add: .DS_Store
+# git config --global core.excludesfile ~/.gitignore_global
+# git config --get core.excludesfile check that it worked
 # ----------------------------------------------------------------------------
 # Mac OS
 # https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
